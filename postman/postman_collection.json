@@ -1,0 +1,117 @@
+{
+  "info": {
+    "name": "Postgres University Schema  API",
+    "_postman_id": "e3f1b4f5-0000-4000-8000-aaaaaaaaaaaa",
+    "description": "Basic endpoints to test the MVP API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/healthz",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "healthz"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List Courses",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/courses",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "courses"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Add Enrollment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"student_id\": 1,\n  \"offering_id\": 2\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/enrollments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "enrollments"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Generate Exam Schedule",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"term_code\": \"2025-SPR\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/exams/schedule",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "exams",
+            "schedule"
+          ]
+        }
+      }
+    },
+    {
+      "name": "View Exam Schedule",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/exams/schedule/2025-SPR",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "exams",
+            "schedule",
+            "2025-SPR"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    }
+  ]
+}
