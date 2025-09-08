@@ -2,11 +2,11 @@
 DO $$
 BEGIN
   IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'uni_readonly') THEN
-    CREATE ROLE uni_readonly LOGIN PASSWORD 'CHANGE_ME_STRONG_PASSWORD';
+    CREATE ROLE uni_readonly LOGIN PASSWORD 'PostgreUniDbPass';
   END IF;
 END $$;
 
-GRANT CONNECT ON DATABASE current_database() TO uni_readonly;
+GRANT CONNECT ON DATABASE neondb TO uni_readonly;
 GRANT USAGE ON SCHEMA public TO uni_readonly;
 
 -- Existing objects
