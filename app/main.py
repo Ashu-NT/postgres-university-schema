@@ -46,7 +46,7 @@ def list_courses(db: Session = Depends(get_db)):
 @app.post("/enrollments", status_code=201)
 def add_enrollment(payload: dict, db: Session = Depends(get_db)):
     """
-    Insert a new enrollment using the API (real-world flow).
+    Insert a new enrollment using the API.
     DB constraints and triggers will enforce business rules.
     Expected JSON body: {"student_id": int, "offering_id": int}
     """
