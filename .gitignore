@@ -31,5 +31,3 @@ obj/
 
 .vscode/
 .env
-Dockerfile
-docker-compose.yml
