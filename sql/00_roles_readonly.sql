@@ -2,7 +2,7 @@
 DO $$
 BEGIN
   IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'uni_readonly') THEN
-    CREATE ROLE uni_readonly LOGIN PASSWORD 'PostgreUniDbPass';
+    CREATE ROLE uni_readonly LOGIN PASSWORD '^REPLACE_WITH_STRONG_PASSWORD^';
   END IF;
 END $$;
 
