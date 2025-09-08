@@ -13,7 +13,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import text
 from app.dp import SessionLocal, fetch_all
 
-app = FastAPI(title="University Timetable MVP")
+app = FastAPI(title="Postgres University Schema API", version="1.0")
 
 def get_db():
     """
