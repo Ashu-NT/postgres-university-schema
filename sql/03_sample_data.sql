@@ -35,8 +35,8 @@ VALUES
 
 -- 6) Timeslots (Mon 09:00–10:30, Tue 11:00–12:30)
 INSERT INTO timeslot (term_id, day_of_week, start_time, end_time)
-SELECT term_id, 1, '09:00','10:30' FROM term WHERE code='2025-SPR' UNION ALL
-SELECT term_id, 2, '11:00','12:30' FROM term WHERE code='2025-SPR';
+SELECT term_id, 1, '09:00'::time ,'10:30'::time  FROM term WHERE code='2025-SPR' UNION ALL
+SELECT term_id, 2, '11:00'::time ,'12:30'::time  FROM term WHERE code='2025-SPR';
 
 -- 7) Class meetings (assign room+slot to offerings)
 INSERT INTO class_meeting (offering_id, room_id, timeslot_id)
@@ -45,13 +45,13 @@ VALUES
   WHERE c.code='CS205' AND section='A' AND term_id=(SELECT term_id FROM term WHERE code='2025-SPR')),
  (SELECT room_id FROM room WHERE code='A101'),
  (SELECT timeslot_id FROM timeslot t JOIN term tm ON t.term_id=tm.term_id
-  WHERE tm.code='2025-SPR' AND day_of_week=1 AND start_time='09:00')),
+  WHERE tm.code='2025-SPR' AND day_of_week=1 AND start_time='09:00'::time));
 
 ((SELECT offering_id FROM course_offering co JOIN course c USING(course_id)
   WHERE c.code='MA110' AND section='B' AND term_id=(SELECT term_id FROM term WHERE code='2025-SPR')),
  (SELECT room_id FROM room WHERE code='B201'),
  (SELECT timeslot_id FROM timeslot t JOIN term tm ON t.term_id=tm.term_id
-  WHERE tm.code='2025-SPR' AND day_of_week=2 AND start_time='11:00'));
+  WHERE tm.code='2025-SPR' AND day_of_week=2 AND start_time='11:00'::time));
 
 -- 8) Students
 INSERT INTO student (reg_no, full_name, email) VALUES
@@ -70,5 +70,5 @@ WHERE (s.reg_no IN ('U2025-0001','U2025-0002') AND c.code='CS205')
 
 -- 10) Exam slots (two slots on same day)
 INSERT INTO exam_slot (term_id, exam_date, start_time, end_time)
-SELECT term_id, '2025-06-01','09:00','12:00' FROM term WHERE code='2025-SPR' UNION ALL
-SELECT term_id, '2025-06-01','13:00','16:00' FROM term WHERE code='2025-SPR';
+SELECT term_id, '2025-06-01'::date,'09:00'::time,'12:00'::time FROM term WHERE code='2025-SPR' UNION ALL
+SELECT term_id, '2025-06-01'::date,'13:00'::time,'16:00'::time FROM term WHERE code='2025-SPR';
