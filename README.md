@@ -107,7 +107,7 @@ Located at `postman/postman_collection.json`—import and replace `{{baseUrl}}` 
 ```
 postgres://<readonly_user>:<password>@<host>/<db>?sslmode=require
 Read-only credentials available on request.
-postgres://uni_readonly:PostgreUniDbPass@ep-rough-moon-agnj9mm7-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
 ```
 
 **Recommended clients:**
