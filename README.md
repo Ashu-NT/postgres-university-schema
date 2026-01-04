@@ -114,7 +114,7 @@ Read-only credentials available on request.
 - **DBeaver / TablePlus:** Paste the URL and connect.
 - **psql CLI:**
   ```bash
-  psql "postgres://uni_readonly:PostgreUniDbPass@ep-rough-moon-agnj9mm7-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+  psql "postgres://<readonly_user>:<password>@<host>/<db>?sslmode=require"
   ```
 
 ---
